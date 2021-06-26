@@ -18,7 +18,7 @@ public:
 
 private:
 	void Init();
-	void Update(float dt, int level, int result, float elapsedTime, float moveDownSlowdown, GLFWwindow* window);
+	void Update(float dt, int level, int& result, float elapsedTime, float moveDownSlowdown, GLFWwindow* window);
 	void Render(GLFWwindow* window);
 
 	void ProcessInput(GLFWwindow* window, float dt, float& moveDownSlowdown, float level);

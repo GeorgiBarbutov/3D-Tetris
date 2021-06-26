@@ -459,21 +459,21 @@ void Application::Init()
 		for (int j = 0; j < BOARD_WIDTH; j++)
 		{
 			_placedCubes[i][0][j] = true;
-			//_placedCubes[i][1][j] = true;
-			//_placedCubes[i][2][j] = true;
-			//_placedCubes[i][3][j] = true;
-			//_placedCubes[i][4][j] = true;
+			_placedCubes[i][1][j] = true;
+			_placedCubes[i][2][j] = true;
+			_placedCubes[i][3][j] = true;
+			_placedCubes[i][4][j] = true;
 		}
 	}
-	//_placedCubes[0][1][0] = false;
-	//_placedCubes[0][2][0] = false;
-	//_placedCubes[0][3][0] = false;
-	//_placedCubes[0][4][0] = false;
-	//_placedCubes[3][3][3] = true;
-	//_placedCubes[3][4][3] = true;
+	_placedCubes[0][1][0] = false;
+	_placedCubes[0][2][0] = false;
+	_placedCubes[0][3][0] = false;
+	_placedCubes[0][4][0] = false;
+	_placedCubes[3][3][3] = true;
+	_placedCubes[3][4][3] = true;
 }
 
-void Application::Update(float dt, int level, int result, float elapsedTime, float moveDownSlowdown, GLFWwindow* window)
+void Application::Update(float dt, int level, int& result, float elapsedTime, float moveDownSlowdown, GLFWwindow* window)
 {
 	const auto view = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
 	const auto projection = glm::perspective(glm::radians(_fov), 1920.0f / 1080.0f, 0.1f, 100.0f);
@@ -630,7 +630,7 @@ void Application::Render(GLFWwindow* window)
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 	}
-	
+	glm::vec3 rotationPointCoordinates = _currentShape->Positions()[1];
 	for (int i = 0; i < 4; i++)
 	{
 		//current shape
